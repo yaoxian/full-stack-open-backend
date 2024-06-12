@@ -36,12 +36,12 @@ app.get("/api/persons/:id", (request, response, next) => {
     .then((result) => {
       response.json(result);
     })
-    .catch((err) => next(error));
+    .catch((error) => next(error));
 });
 
 app.delete("/api/persons/:id", (request, response, next) => {
   Phonebook.findByIdAndDelete(request.params.id)
-    .then((result) => {
+    .then(() => {
       response.status(204).end();
     })
     .catch((err) => next(err));
